@@ -2,7 +2,7 @@ package cleancode.day4mission;
 
 import java.util.logging.Logger;
 
-public class ValidateOrder {
+public class Validate {
 
     private static final Logger log = Logger.getGlobal();
 
@@ -23,7 +23,6 @@ public class ValidateOrder {
         return false;
     }
 
-
     private static boolean isTotalPricePositive(Order order) {
         return order.getTotalPrice() > 0;
     }
@@ -31,4 +30,6 @@ public class ValidateOrder {
     private static boolean hasNoOrder(Order order) {
         return order.ItemIsEmpty();
     }
+
+
 }

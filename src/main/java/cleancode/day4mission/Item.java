@@ -1,21 +1,19 @@
 package cleancode.day4mission;
 
 public class Item {
-    private String name; // 아이템 이름
-    private double price; // 아이템 가격
+    private final String name;
+    private final int price;
 
-    // 생성자
-    public Item(String name, double price) {
+    public Item(String name, int price) {
         this.name = name;
         this.price = price;
     }
 
-    // Getter 메서드
     public String getName() {
         return name;
     }
 
-    public double getPrice() {
+    public int getPrice() {
         return price;
     }
 }

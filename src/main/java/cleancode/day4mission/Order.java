@@ -4,41 +4,36 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Order {
-    private List<Item> items; // 주문 항목 목록
-    private Customer customer; // 고객 정보
+    private final List<Item> items = new ArrayList<>();
+    private final Customer customer;
 
-    // 생성자
-    public Order() {
-        this.items = new ArrayList<>();
-    }
-
-    // 주문 항목 추가
-    public void addItem(Item item) {
+    public Order(Item item, Customer customer) {
         this.items.add(item);
+        this.customer = customer;
     }
 
-    // 주문 항목 목록 가져오기
-    public List<Item> getItems() {
-        return items;
-    }
-
-    // 총 가격 계산
     public double getTotalPrice() {
-        return items.stream().mapToDouble(Item::getPrice).sum();
+        int total = 0;
+        for (Item item : items) total += item.getPrice();
+        return total;
     }
 
-    // 고객 정보가 있는지 확인
     public boolean hasCustomerInfo() {
         return customer != null;
     }
 
-    // 고객 정보 설정
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
-
-
     public boolean ItemIsEmpty() {
         return items.isEmpty();
+    }
+
+    public void printOrderItems() {
+        if (items.isEmpty()) {
+            System.out.println("주문 항목이 없습니다.");
+        } else {
+            System.out.println("주문 항목:");
+            for (Item item : items) {
+                System.out.println("구매자: " + customer.getName() + ", 상품명: " + item.getName() + ", 가격: " + item.getPrice());
+            }
+        }
     }
 }
